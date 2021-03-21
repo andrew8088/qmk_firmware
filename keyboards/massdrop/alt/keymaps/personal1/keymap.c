@@ -13,6 +13,10 @@ enum alt_keycodes {
 keymap_config_t keymap_config;
 
 #define MD_LOCK  LCTL(LCMD(KC_Q))  // MacOS lock screen shortcut
+#define MD_SLEP LCMD(LOPT(KC_EJCT))  // Command-Option-Eject
+
+const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {COMBO(jk_combo, KC_ESC)};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_65_ansi_blocker(
@@ -25,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT_65_ansi_blocker(
         KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_MUTE, \
         _______, RGB_SPD, RGB_VAI, RGB_SPI, RGB_HUI, RGB_SAI, _______, U_T_AUTO,U_T_AGCR,_______, KC_PSCR, KC_SLCK, KC_PAUS, _______, KC_END, \
-        _______, RGB_RMOD,RGB_VAD, RGB_MOD, RGB_HUD, RGB_SAD, _______, _______, _______, _______, MD_LOCK, _______,          _______, KC_VOLU, \
+        _______, RGB_RMOD,RGB_VAD, RGB_MOD, RGB_HUD, RGB_SAD, _______, _______, _______, MD_LOCK, MD_SLEP, _______,          _______, KC_VOLU, \
         _______, RGB_TOG, _______, _______, _______, MD_BOOT, NK_TOGG, DBG_TOG, _______, _______, _______, _______,          KC_PGUP, KC_VOLD, \
         _______, _______, _______,                            _______,                            _______, _______, KC_HOME, KC_PGDN, KC_END  \
     ),
